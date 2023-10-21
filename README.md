@@ -112,3 +112,13 @@ W/S - Throttle<br>
 F - Flaps<br>
 C - Change camera<br>
 
+## License
+
+Rama Karl Hoetzlein (c) 2023<br>
+MIT License<br>
+<br>
+Citations:<br>
+2023, Hoetzlein, Rama. A simple, single-body flight model. Retrieve from github.com/ramakarl/Flightsim. 
+
+
+
