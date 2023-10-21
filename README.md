@@ -40,7 +40,7 @@ However, the limits of a non-force model (NFM) are quickly apparent. There is no
 A very nice flight simulator model was recently described by Jakob Maier, [Simple Physics-based Flight Simulation with C++](https://www.jakobmaier.at/posts/flight-simulation/). This model provides a “true” model for flight simulation. In physics, a rigid body is an object that has both an orientation and a position which are integrated simultaneously. For position, the integration of acceleration and velocity update body position. For orientation, the integration of total torque and angular velocity update body orientation. This physical model of a rigid body is the correct way to simulate an aircraft.
 
 <br>
-<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig03.png" width="600" />
+<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig03.png" width="500" />
 Figure 5. A multi-surface flight model (MSFM) where each control surface is modeled as a wing producing torque on the rigid body of the aircraft.<br><br>
 
 The challenge with such a model, where Jakob goes into details, is that the torque produced on an aircraft is quite complex. This depends on the independent torque of each wing control surface on the body. Additionally, the airflow which produces lift and drag forces depend on the current orientation of the aircraft. 
@@ -60,7 +60,7 @@ The above multi-surface force model (MSFM) is realistic, yet each aircraft requi
 
 My first experiment was simply to take Jakob’s MSFM are remove all the wings. I then applied a lift to the entire aircraft as if it were a single wing. This is a wing-like fuselage with direction and angular velocity. What I found confirms a very basic aspect of aircraft engineering. Most aircraft are designed to be balanced at the pivot point of the wings. If not, they spin out of control (unless there is something fancy like dynamic stability and fly-by-wire). I thought perhaps a well-balanced, wing-like fuselage could provide the basis for a single-body simulator.
 
-<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig08.jpg" width="600" />
+<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig08.jpg" width="800" />
 Figure 7. Wing-like aircraft. While the airframe is stable and produces lift, multiple control surfaces are still required to enable directional stability.<br><br>
 
 Unfortunately, even with a (simulated) model aircraft treated as a giant wing, this didn’t work. The entire wing produces a rotational torque based on its angle-of-attack, but there is nothing to influence or stabilize it on other axes. With all forces in balance it remains stable, but if any forces become asymmetric (such as power, wind, angle-of-attack) there is no way to maintain steady flight. There are in fact wing-like aircraft, such as the Northrop YB-35, which look like a giant wing. One might be tempted to say this is a single-body aerodynamic surface. However, there are multiple ailerons on this aircraft which enable one to control it. Therefore, from a physics perspective, practical wing-like aircraft are still multi-body surfaces. The only true single-body aircraft I could imagine is a paper airplane. Notice how these may act like gliders but are essentially impossible to control.
