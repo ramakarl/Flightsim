@@ -14,7 +14,7 @@ The essential inputs for orientation control are roll, pitch and yaw.
 
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig01.png" width="400" />
-Figure 2. Changes in orientation of an aircraft due to roll, pitch and yaw.
+Figure 2. Changes in orientation of an aircraft due to roll, pitch and yaw.<br>
 
 We assume the reader is familiar with basic physics. Acceleration is integrated to update velocity, and velocity is integrated to update position. A basic particle system moves each particle along its own velocity vector. However, in basic particle systems the orientation is often ignored. 
 
@@ -23,7 +23,7 @@ A simple, non-realistic model of orientation is to create a local frame-of-refer
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig02.png" width="400" />
 Figure 3. A basic flight model with a local frame-of-reference centered at point P, with 
-forward velocity V along the X-axis.
+forward velocity V along the X-axis.<br>
 
 Thus a very basic flight model is this: Ailerons control roll, elevators control pitch, and the rudder controls yaw. Apply these rotations directly to the body orientation. Then, reorient the velocity vector along the forward (x+) direction and move the body forward. The “throttle” of the model can simply control how fast the body is moved forward. 
 
@@ -41,7 +41,7 @@ A very nice flight simulator model was recently described by Jakob Maier [Simple
 
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig03.png" width="600" />
-Figure 5. A multi-surface flight model (MSFM) where each control surface is modeled as a wing producing torque on the rigid body of the aircraft. 
+Figure 5. A multi-surface flight model (MSFM) where each control surface is modeled as a wing producing torque on the rigid body of the aircraft.<br>
 
 The challenge with such a model, where Jakob goes into details, is that the torque produced on an aircraft is quite complex. This depends on the independent torque of each wing control surface on the body. Additionally, the airflow which produces lift and drag forces depend on the current orientation of the aircraft. 
 
@@ -61,7 +61,7 @@ The above multi-surface force model (MSFM) is realistic, yet each aircraft requi
 My first experiment was simply to take Jakob’s MSFM are remove all the wings. I then applied a lift to the entire aircraft as if it were a single wing. This is a wing-like fuselage with direction and angular velocity. What I found confirms a very basic aspect of aircraft engineering. Most aircraft are designed to be balanced at the pivot point of the wings. If not, they spin out of control (unless there is something fancy like dynamic stability and fly-by-wire). I thought perhaps a well-balanced, wing-like fuselage could provide the basis for a single-body simulator.
 
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig08.jpg" width="600" />
-Figure 7. Wing-like aircraft. While the airframe is stable and produces lift, multiple control surfaces are still required to enable directional stability.
+Figure 7. Wing-like aircraft. While the airframe is stable and produces lift, multiple control surfaces are still required to enable directional stability.<br>
 
 Unfortunately, even with a (simulated) model aircraft treated as a giant wing, this didn’t work. The entire wing produces a rotational torque based on its angle-of-attack, but there is nothing to influence or stabilize it on other axes. With all forces in balance it remains stable, but if any forces become asymmetric (such as power, wind, angle-of-attack) there is no way to maintain steady flight. There are in fact wing-like aircraft, such as the Northrop YB-35, which look like a giant wing. One might be tempted to say this is a single-body aerodynamic surface. However, there are multiple ailerons on this aircraft which enable one to control it. Therefore, from a physics perspective, practical wing-like aircraft are still multi-body surfaces. The only true single-body aircraft I could imagine is a paper airplane. Notice how these may act like gliders but are essentially impossible to control.
 
@@ -75,7 +75,7 @@ The concept of directional stability provides the basis for a **single-body forc
 
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig05.png" width="600" />
-Figure 8. A single-body force model (SBFM) which utilizes the principle of directional stability to determine orientation, thereby eliminating the need to simulate multiple control surfaces, while still integrating forces.
+Figure 8. A single-body force model (SBFM) which utilizes the principle of directional stability to determine orientation, thereby eliminating the need to simulate multiple control surfaces, while still integrating forces.<br>
 
 The SBFM model is as follows: 
 The aircraft has a position, velocity and orientation. The current orientation is compared to the velocity, which determines the angle-of-attack of the wings. This directly affects the lift and drag of the primary wings. There are no other lift surfaces (such as elevators or rudder). The lift, drag, throttle and gravity forces are applied to determine acceleration. Acceleration is integrated to update velocity. At this point, the pitch/yaw controls are applied to directly alter the velocity vector. Based on the principle of dynamic stability, the orientation of the aircraft is fractionally re-oriented toward the velocity vector. There is no need to explicitly compute torque, angular velocity or inertial tensors. Velocity is finally integrated to update position.
