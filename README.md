@@ -88,6 +88,15 @@ The single-body force model (SBFM) is a major improvement over the basic non-for
  
 The demo here also includes landing and takeoffs. Landings are simply a matter of checking if the roll and pitch are less than five degrees, the sink rate (downward velocity) is less than 2 meters/sec, the current speed is less than 80 meters/sec, and the aircraft is over the runway. Basically, it is possible to land this model.
 
+## Results
+
+The goal of this project is to simulate of hundreds of aircraft with a simple, realistic model while being efficient with respect to computation and memory. 
+
+<br>
+<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig10.png" width="800" />
+Figure 10. Results on computation, memory and simulated effects for each model.
+<br><br>
+
 ## Building
 
 Steps to build:
