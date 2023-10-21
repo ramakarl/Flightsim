@@ -46,7 +46,7 @@ Figure 5. A multi-surface flight model (MSFM) where each control surface is mode
 The challenge with such a model, where Jakob goes into details, is that the torque produced on an aircraft is quite complex. This depends on the independent torque of each wing control surface on the body. Additionally, the airflow which produces lift and drag forces depend on the current orientation of the aircraft. 
 
 <br>
-<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig05.png" width="600" />
+<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig06.png" width="600" />
 Figure 6. Program flow in the multi-surface flight model (MSFM). Control surface introduce both force and torque on the rigid body frame. Acceleration is integrated to give velocity and position, while torque and angular velocity are integrated to give orientation.
 
 Let’s examine this from a program flow perspective. The control inputs of roll/pitch/yaw modify the multiple wing surfaces, which produce lift and drag that act on both the forces and torques of the aircraft based on its current orientation. While the forces are integrated to update the acceleration, velocity and position, the torques at the current orientation are integrated to update the angular velocity based on inertia to give the updated orientation. The updated orientation then becomes the body orientation in the next step. 
@@ -74,7 +74,7 @@ Only during 3D flying, or extreme acrobatics, do we find aircraft moving along v
 The concept of directional stability provides the basis for a **single-body force model** (SBFM) of flight, as shown in the code here. This model eliminates the integration of torque and angular velocity, and assumes that body orientation should continually attempt to match the forward velocity. With this method there is no need to simulate torque from multiple wings. Like the non-force model (NFM), the pitch/yaw control inputs are directly applied to reorient the velocity vector. Yet the new SBFM model does still integrate acceleration and velocity so many aspects of real flight are retained. 
 
 <br>
-<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig06.png" width="600" />
+<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig05.png" width="600" />
 Figure 8. A single-body force model (SBFM) which utilizes the principle of directional stability to determine orientation, thereby eliminating the need to simulate multiple control surfaces, while still integrating forces.
 
 The SBFM model is as follows: 
