@@ -5,7 +5,7 @@ This single-body flight model (SBFM) provides a simple and efficient way to simu
 
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig09.jpg" width="600" />
-Figure 1. Screenshots of this flightsim showing a) takeoff, b) banking and c) landing approach. This simulator introduces a single-body flight model (SBFM) that requires only 7 state variables and 26 lines of code to develop a reasonably realistic model of dynamic flight.
+Figure 1. Screenshot of this flight simulator showing a landing approach. This simulator introduces a single-body flight model (SBFM) that requires only 7 state variables and 26 lines of code to develop a reasonably realistic model of dynamic flight.
 
 ### Basics of Orientation
 
