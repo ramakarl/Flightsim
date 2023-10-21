@@ -1,4 +1,4 @@
-## Flightsim:<br> A simple,single-body flight model
+## Flightsim:<br> A simple, single-body flight simulator
 ## [Rama Karl](http://ramakarl) (c) 2023. MIT License.
 
 This single-body flight model (SBFM) provides a simple and efficient way to simulate flight. The model here is able to simulate power, speed, gravity, wind, banking, stalls and takeoff/landings among other flight capabilities. This is achieved with a single-body model that simplifies many calculations. More realistic flight models typically require the independent simulation of a multiple-surface force model (MSFM) to consider each control surface, yet this increases code complexity and computation. The goal of this project was to simulate hundreds of objects in flight, therefore the flight model must be robust and simple yet also realistic. 
@@ -37,7 +37,7 @@ However, the limits of a non-force model (NFM) are quickly apparent. There is no
 
 ### Complete Models - Multi-Surface Force Models
 
-A very nice flight simulator model was recently described by Jakob Maier [Simple Physics-based Flight Simulation with C++]. This model provides a “true” model for flight simulation. In physics, a rigid body is an object that has both an orientation and a position which are integrated simultaneously. For position, the integration of acceleration and velocity update body position. For orientation, the integration of total torque and angular velocity update body orientation. This physical model of a rigid body is the correct way to simulate an aircraft.
+A very nice flight simulator model was recently described by Jakob Maier [Simple Physics-based Flight Simulation with C++](https://www.jakobmaier.at/posts/flight-simulation/). This model provides a “true” model for flight simulation. In physics, a rigid body is an object that has both an orientation and a position which are integrated simultaneously. For position, the integration of acceleration and velocity update body position. For orientation, the integration of total torque and angular velocity update body orientation. This physical model of a rigid body is the correct way to simulate an aircraft.
 
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig03.png" width="600" />
