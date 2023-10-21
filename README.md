@@ -13,7 +13,7 @@ When one first attempts to code a flight simulator, one of the most interesting 
 The essential inputs for orientation control are roll, pitch and yaw. 
 
 <br>
-<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig01.png" width="400" />
+<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig01.png" width="600" />
 Figure 2. Changes in orientation of an aircraft due to roll, pitch and yaw.<br>
 
 We assume the reader is familiar with basic physics. Acceleration is integrated to update velocity, and velocity is integrated to update position. A basic particle system moves each particle along its own velocity vector. However, in basic particle systems the orientation is often ignored. 
