@@ -1,7 +1,7 @@
 ## Flightsim:<br> A simple, single-body flight simulator
 ## [Rama Karl](http://ramakarl) (c) 2023. MIT License.
 
-This single-body flight model (SBFM) provides a simple and efficient way to simulate flight. The model here is able to simulate power, speed, gravity, wind, banking, stalls and takeoff/landings among other flight capabilities. This is achieved with a single-body model that simplifies many calculations. More realistic flight models typically require the independent simulation of a multiple-surface force model (MSFM) to consider each control surface, yet this increases code complexity and computation. The goal of this project was to simulate hundreds of objects in flight, therefore the flight model must be robust and simple yet also realistic. 
+The goal of this project is to support simulations with possibly hundreds of objects in flight, therefore the flight model must be robust and simple yet also realistic. This single-body flight model (SBFM) provides a simple and efficient way to simulate flight. The model here is able to simulate power, speed, gravity, wind, banking, stalls and takeoff/landings among other flight capabilities. This is achieved with a single-body model that simplifies many calculations. More realistic flight models typically require the independent simulation of a multiple-surface force model (MSFM) to consider each control surface, yet this increases code complexity and computation. 
 
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig09.jpg" width="600" />
