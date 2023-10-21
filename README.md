@@ -28,7 +28,7 @@ forward velocity V along the X-axis.<br><br>
 Thus a very basic flight model is this: Ailerons control roll, elevators control pitch, and the rudder controls yaw. Apply these rotations directly to the body orientation. Then, reorient the velocity vector along the forward (x+) direction and move the body forward. The “throttle” of the model can simply control how fast the body is moved forward. 
 
 <br>
-<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig04.png" width="600" />
+<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig04.png" width="400" />
 Figure 4. A basic non-force model (NFM). Controls directly modify the orientation of the velocity vector.<br><br>
 
 This very simple **non-force model** (NFM) has a nice feeling as a basic flight simulator. The roll/pitch/yaw controls make intuitive sense. The airplane moves forward along the forward direction as expected, and basic maneuvers are possible like banking and loops. This is a good student exercise in orientation.
