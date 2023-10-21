@@ -88,6 +88,18 @@ The single-body force model (SBFM) is a major improvement over the basic non-for
  
 The demo here also includes landing and takeoffs. Landings are simply a matter of checking if the roll and pitch are less than five degrees, the sink rate (downward velocity) is less than 2 meters/sec, the current speed is less than 80 meters/sec, and the aircraft is over the runway. Basically, it is possible to land this model.
 
+## Building
 
+Steps to build:
+1. Build [libmin](https://github.com/ramakarl/libmin) first with cmake.
+2. Build Flightsim with cmake. Specify the installed location of libmin as the LIBMIN_PATH.
+3. Run!
 
+## Input Controls
+
+LEFT/RIGHT - Ailerons (roll)
+UP/DWON - Elevators (pitch)
+W/S - Throttle
+F - Flaps
+C - Change camera
 
