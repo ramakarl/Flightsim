@@ -13,7 +13,7 @@ When one first attempts to code a flight simulator, one of the most interesting 
 The essential inputs for orientation control are roll, pitch and yaw. 
 
 <br>
-<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig01.png" width="500" />
+<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig01.png" width="400" />
 Figure 2. Changes in orientation of an aircraft due to roll, pitch and yaw.
 
 We assume the reader is familiar with basic physics. Acceleration is integrated to update velocity, and velocity is integrated to update position. A basic particle system moves each particle along its own velocity vector. However, in basic particle systems the orientation is often ignored. 
@@ -21,7 +21,7 @@ We assume the reader is familiar with basic physics. Acceleration is integrated 
 A simple, non-realistic model of orientation is to create a local frame-of-reference (orientation) along the velocity vector. A forward direction (x-axis here) is chosen to align with velocity. The up direction (y-axis here) is initiated as straight up. Roll is a rotation around the x-axis, changing the up direction. Pitch is a rotation around the z-axis, and yaw is a rotation about the y-axis. 
 
 <br>
-<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig02.png" width="500" />
+<img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig02.png" width="400" />
 Figure 3. A basic flight model with a local frame-of-reference centered at point P, with 
 forward velocity V along the X-axis.
 
