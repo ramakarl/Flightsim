@@ -90,7 +90,7 @@ The demo here also includes landing and takeoffs. Landings are simply a matter o
 
 ## Results
 
-The goal of this project is to simulate of hundreds of aircraft with a simple, realistic model while being efficient with respect to computation and memory. 
+The goal of this project is to support the simulation of hundreds of aircraft with a simple, realistic model while being efficient with respect to computation and memory. 
 
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig10.png" width="600" />
