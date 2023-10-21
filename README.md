@@ -23,7 +23,7 @@ A simple, non-realistic model of orientation is to create a local frame-of-refer
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig02.png" width="400" />
 Figure 3. A basic flight model with a local frame-of-reference centered at point P, with 
-forward velocity V along the X-axis.<br>
+forward velocity V along the X-axis.<br><br>
 
 Thus a very basic flight model is this: Ailerons control roll, elevators control pitch, and the rudder controls yaw. Apply these rotations directly to the body orientation. Then, reorient the velocity vector along the forward (x+) direction and move the body forward. The “throttle” of the model can simply control how fast the body is moved forward. 
 
