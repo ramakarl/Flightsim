@@ -97,9 +97,9 @@ Steps to build:
 
 ## Input Controls
 
-LEFT/RIGHT - Ailerons (roll)
-UP/DWON - Elevators (pitch)
-W/S - Throttle
-F - Flaps
-C - Change camera
+LEFT/RIGHT - Ailerons (roll)<br>
+UP/DWON - Elevators (pitch)<br>
+W/S - Throttle<br>
+F - Flaps<br>
+C - Change camera<br>
 
