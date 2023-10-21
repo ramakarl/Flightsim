@@ -29,9 +29,9 @@ Thus a very basic flight model is this: Ailerons control roll, elevators control
 
 <br>
 <img src="https://github.com/ramakarl/Flightsim/blob/main/docs/fig04.png" width="600" />
-Figure 4. A basic non-force model (NFM). Controls directly modify the orientation of the velocity vector.
+Figure 4. A basic non-force model (NFM). Controls directly modify the orientation of the velocity vector.<br><br>
 
-This very simple non-force model (NFM) has a nice feeling as a basic flight simulator. The roll/pitch/yaw controls make intuitive sense. The airplane moves forward along the forward direction as expected, and basic maneuvers are possible like banking and loops. This is a good student exercise in orientation.
+This very simple **non-force model** (NFM) has a nice feeling as a basic flight simulator. The roll/pitch/yaw controls make intuitive sense. The airplane moves forward along the forward direction as expected, and basic maneuvers are possible like banking and loops. This is a good student exercise in orientation.
 
 However, the limits of a non-force model (NFM) are quickly apparent. There is no gravity, no forces, no lift or drag. Therefore the basic challenges of real flight are missing. This model airplane won’t pitch forward or accelerate as it falls. Rolls should cause a plane to dip since the orientation of wing lift is rotated, yet that won’t happen here. Stalls are also not simulated. Without the concept of forces a basic orientation model omits the many challenges of flying.
 
