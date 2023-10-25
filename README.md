@@ -97,6 +97,10 @@ The goal of this project is to support the simulation of hundreds of aircraft wi
 Figure 10. Results on computation, memory and simulated effects for each model.
 <br><br>
 
+## Acknowledgements
+
+I'd like to thank Mark Zifchock for comments on non-force models and Scott Smolka for discussions on flight control in general.
+
 ## Building
 
 Steps to build:
