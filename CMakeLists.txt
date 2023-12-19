@@ -1,15 +1,18 @@
 cmake_minimum_required(VERSION 2.8)
+set (CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR} CACHE PATH "")
+
 set(PROJNAME Flightsim)
 Project(${PROJNAME})
 Message(STATUS "-------------------------------")
 Message(STATUS "Processing Project ${PROJNAME}:")
 
 #####################################################################################
-# LIBMIN Installed Path
+# LIBMIN Bootstrap
 #
-set ( LIBMIN_PATH "d:/codes/build/libmin" CACHE STRING "Location of Libmin")
-list( APPEND CMAKE_MODULE_PATH "${LIBMIN_PATH}/cmake" )
-list( APPEND CMAKE_PREFIX_PATH "${LIBMIN_PATH}/cmake" )
+get_filename_component ( LIBMIN_CMAKES "${CMAKE_CURRENT_SOURCE_DIR}/../libmin/cmake" REALPATH )
+set ( LIBMIN_CMAKES ${LIBMIN_CMAKES} CACHE PATH "")
+list( APPEND CMAKE_MODULE_PATH "${LIBMIN_CMAKES}" )
+list( APPEND CMAKE_PREFIX_PATH "${LIBMIN_CMAKES}" )
 
 #####################################################################################
 # Include LIBMIN
@@ -19,10 +22,10 @@ find_package(Libmin QUIET)
 if (NOT LIBMIN_FOUND)
 
   Message ( FATAL_ERROR "
-  This project requires Libmin. Build Libmin first.
-  Set the LIBMIN_PATH to the installed location (not the libmin source).
-  Libmin also provides the cmakes used to build this app. 
+  This project requires libmin. 
+  Set LIBMIN_CMAKES to the libmin repository path for /libmin/cmake.
   " )
+
 
 else()
   add_definitions(-DUSE_LIBMIN)  
@@ -69,25 +72,11 @@ if (BUILD_OPENGL)
 	message ( STATUS "  ---> Using GLEW: ${COMMON_SOURCE_FILES}" )
 endif()
 
-
-
-######################
-# CMAKE_INSTALL_PREFIX -- path where library will be installed to
-
-if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-   if ( WIN32 )
-      get_filename_component ( _instpath "${CMAKE_CURRENT_BINARY_DIR}" REALPATH )
-   else()
-      get_filename_component ( _instpath "/usr/local/shapes" REALPATH )
-   endif()
-   set ( CMAKE_INSTALL_PREFIX ${_instpath} CACHE PATH "default install path" FORCE)   
-endif()
-
 #####################################################################################
 # Asset Path
 #
 if ( NOT DEFINED ASSET_PATH ) 
-   get_filename_component ( _assets "${BASE_DIRECTORY}/assets" REALPATH )
+   get_filename_component ( _assets "${CMAKE_INSTALL_PREFIX}/assets" REALPATH )
    set ( ASSET_PATH ${_assets} CACHE PATH "Full path to /assets" )
    add_definitions( -DASSET_PATH="${ASSET_PATH}/" )
 endif()
@@ -140,18 +129,20 @@ _DEFAULT_INSTALL_PATH()
 
 # *NOTE*: file COPY is at cmake-time, not compile-time. Need to replace with add_custom_command -E copy_directory (my own _COPY)
 
-file (COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION ${EXECUTABLE_OUTPUT_PATH} )	# assets folder
-_INSTALL ( FILES ${SHADERS} DESTINATION "${EXECUTABLE_OUTPUT_PATH}/assets" )		# shaders
-_INSTALL ( FILES ${PACKAGE_DLLS} DESTINATION ${EXECUTABLE_OUTPUT_PATH} )		# DLLs
-install ( FILES $<TARGET_PDB_FILE:${PROJNAME}> DESTINATION ${EXECUTABLE_OUTPUT_PATH} OPTIONAL )		# PDB
+file (COPY "${CMAKE_CURRENT_SOURCE_DIR}/assets" DESTINATION ${CMAKE_INSTALL_PREFIX} )	# assets folder
+_INSTALL ( FILES ${SHADERS} DESTINATION "${CMAKE_INSTALL_PREFIX}/assets" )		# shaders
+_INSTALL ( FILES ${PACKAGE_DLLS} DESTINATION ${CMAKE_INSTALL_PREFIX} )		# DLLs
+install ( FILES $<TARGET_PDB_FILE:${PROJNAME}> DESTINATION ${CMAKE_INSTALL_PREFIX} OPTIONAL )		# PDB
 
-install ( FILES ${INSTALL_LIST} DESTINATION ${EXECUTABLE_OUTPUT_PATH} )		# exe, pdb
+install ( FILES ${INSTALL_LIST} DESTINATION ${CMAKE_INSTALL_PREFIX} )		# exe, pdb
 
 ###########################
 # Done
 message ( STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}" )
 message ( STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}" )
-message ( STATUS "EXECUTABLE_OUTPUT_PATH: ${EXECUTABLE_OUTPUT_PATH}" )
+message ( STATUS "-----------------------" )
+message ( "Flightsim Install Location: ${CMAKE_INSTALL_PREFIX}" )
+message ( STATUS "-----------------------" )
 
 
 
